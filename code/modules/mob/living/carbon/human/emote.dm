@@ -90,7 +90,6 @@
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE
 
-
 /datum/emote/living/carbon/human/mumble
 	key = "mumble"
 	key_third_person = "mumbles"
@@ -149,6 +148,66 @@
 		return
 	if(H.dna.species.is_wagging_tail(H))
 		. = null
+
+/datum/emote/living/carbon/human/howl
+	key = "howl"
+	key_third_person = "howls"
+	message = "lets out a piercing howl!"
+	message_muffled = "makes a long, whining noise."
+	emote_type = EMOTE_AUDIBLE
+
+/mob/living/carbon/human/verb/emote_howl(mob/user)
+	set name = "Howl"
+	set category = "Noises"
+	var/mob/living/carbon/human/H = user
+	if(!is_species(H, /datum/species/lupian))
+		return FALSE
+
+	emote("howl", intentional = TRUE)
+
+/datum/emote/living/carbon/human/howl/run_emote(mob/user, params)
+	. = ..()
+	if(!.)
+		return
+	var/mob/living/carbon/human/H = user
+	if(!istype(H) || !H.dna || !H.dna.species)
+		return FALSE
+	if(!is_species(H, /datum/species/lupian))
+		return FALSE
+
+/datum/emote/living/carbon/human/growl
+	key = "growl"
+	key_third_person = "growls"
+	message = "lets out a low growl."
+	message_muffled = "makes a muffled snarl."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/growl/run_emote(mob/user, params)
+	. = ..()
+	if(!.)
+		return
+	var/mob/living/carbon/human/H = user
+	if(!istype(H) || !H.dna || !H.dna.species)
+		return FALSE
+	if(!is_species(H, /datum/species/lupian))
+		return FALSE
+
+/datum/emote/living/carbon/human/pant
+	key = "pant"
+	key_third_person = "pants"
+	message = "starts to pant."
+	message_muffled = "makes a muffled noise."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/growl/run_emote(mob/user, params)
+	. = ..()
+	if(!.)
+		return
+	var/mob/living/carbon/human/H = user
+	if(!istype(H) || !H.dna || !H.dna.species)
+		return FALSE
+	if(!is_species(H, /datum/species/lupian))
+		return FALSE
 
 /datum/emote/living/carbon/human/wing
 	key = "wing"
